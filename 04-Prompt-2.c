@@ -42,7 +42,7 @@ test_flush();
 subtest("Username present in prompt",
 {
     printf("Prompt string: %s\n", prompt);
-    char *login = getlogin();
+    char *login = cuserid(NULL);
     if (login == NULL) {
         perror("getlogin");
     }
