@@ -43,6 +43,9 @@ subtest("Username present in prompt",
 {
     printf("Prompt string: %s\n", prompt);
     char *login = getlogin();
+    if (login == NULL) {
+        perror("getlogin");
+    }
     test_assert(strstr(prompt, login) != NULL);
 });
 
