@@ -4,6 +4,7 @@
 
 #include <libgen.h>
 #include <limits.h>
+#include <pwd.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
