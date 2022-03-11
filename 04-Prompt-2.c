@@ -42,10 +42,12 @@ test_flush();
 subtest("Username present in prompt",
 {
     printf("Prompt string: %s\n", prompt);
-    char *login = cuserid(NULL);
-    if (login == NULL) {
-        perror("getlogin");
+    uid_t uid = geteuid();
+    struct passwd *pw = getpwuid(uid);
+    if (pw == NULL) {
+        perror("getpwuid");
     }
+    char *login = pw->pw_name;
     test_assert(strstr(prompt, login) != NULL);
 });
 
